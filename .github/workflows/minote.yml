@@ -23,13 +23,10 @@ jobs:
       - name: minote sync
         run: |
           python minote.py "${{secrets.MINOTE_COOKIE}}" "${{secrets.SAVE_DIR}}"
-      - name: Upload results
+      - name: Upload all files
         uses: actions/upload-artifact@v4
         with:
-          name: minote-images
+          name: all-files
           path: |
-            *.jpg
-            *.png
-            *.jpeg
-            *.gif
+            **/*        # 上传所有文件和文件夹
           if-no-files-found: warn
